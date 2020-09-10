@@ -16,11 +16,11 @@
 <div class="container">
 <!-- Navbar -->
 	<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-<!-- // Navbar -->
+
 <!-- content -->
 <div class="content">
 	<h2 class="content-title">
-		RECENT POSTS on <u><?php echo getTopicNameById(1); ?></u>
+		RECENT POSTS on <u><?php echo getTopicNameById($topic_id); ?></u>
 	</h2>
 	<hr>
 	<?php foreach ($posts as $post): ?>

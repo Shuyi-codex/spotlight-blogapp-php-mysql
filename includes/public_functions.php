@@ -24,7 +24,7 @@ function getPublishedPosts() {
 function getPostTopic($post_id){
 	global $conn;
 	$sql = "SELECT * FROM topics WHERE id=
-			(SELECT topic_id FROM post_topic WHERE post_id=$post_id) LIMIT 1";
+			    (SELECT topic_id FROM post_topic WHERE post_id=$post_id) LIMIT 1";
 	$result = mysqli_query($conn, $sql);
 	$topic = mysqli_fetch_assoc($result);
 	return $topic;

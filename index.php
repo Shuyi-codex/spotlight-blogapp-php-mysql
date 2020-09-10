@@ -2,6 +2,8 @@
 
 <?php require_once( ROOT_PATH . '/includes/public_functions.php') ?>
 
+<?php require_once( ROOT_PATH . '/includes/registration_login.php') ?>
+
 <!-- Retrieve all posts from database  -->
 <?php $posts = getPublishedPosts(); ?>
 
@@ -43,7 +45,7 @@
             <div class="post_info">
               <h3><?php echo $post['title'] ?></h3>
               <div class="info">
-                <span><?php echo date("Y-m-d", strtotime($post["created_at"])); ?></span>
+                <span><?php  echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
                 <span class="read_more">Read more...</span>
               </div>
             </div>

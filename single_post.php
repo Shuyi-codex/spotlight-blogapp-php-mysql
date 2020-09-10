@@ -9,7 +9,7 @@
 	$topics = getAllTopics();
 ?>
 <?php include('includes/head_section.php'); ?>
-<title> <?php echo $post['title'] ?> | LifeBlog</title>
+<title> <?php echo $post['title'] ?> | SpotLight</title>
 </head>
 <body>
 <div class="container">
@@ -24,6 +24,8 @@
 			<div class="full-post-div">
 			<?php if ($post['published'] == false): ?>
 				<h2 class="post-title">Sorry... This post has not been published yet!</h2>
+        <h3 class="post-body-div"> The administrators of this page will publish this 
+          article very soon. Sorry for the inconvenience that may have caused. In the meantime, Please check out other various <a href="<?php echo BASE_URL . 'index.php' ?>">published articles</a></p>
 			<?php else: ?>
 				<h2 class="post-title"><?php echo $post['title']; ?></h2>
 				<div class="post-body-div">
