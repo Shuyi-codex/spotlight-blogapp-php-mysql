@@ -148,13 +148,17 @@ function deleteAdmin($admin_id) {
 * - Returns all admin users and their corresponding roles
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 function getAdminUsers(){
-	global $conn, $roles;
-	$sql = "SELECT * FROM users WHERE role IS NOT NULL";
-	$result = mysqli_query($conn, $sql);
-	$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  global $conn, $roles;
+  // only an Admin can manage users
+  if ($_SESSION['user']['role'] == "Admin") {
+    $sql = "SELECT * FROM users WHERE role IS NOT NULL";
+    $result = mysqli_query($conn, $sql);
+    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  }
 
 	return $users;
 }
+
 /* * * * * * * * * * * * * * * * * * * * *
 * - Escapes form submitted value, hence, preventing SQL injection
 * * * * * * * * * * * * * * * * * * * * * */

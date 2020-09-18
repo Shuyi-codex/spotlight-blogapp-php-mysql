@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	// connect to database
-	$conn = mysqli_connect("localhost", "root", "", "spotlight-blogapp");
+	$conn = mysqli_connect("127.0.0.1", "root", "", "spotlight-blogapp");
 
 	if (!$conn) {
 		die("Error connecting to database: " . mysqli_connect_error());

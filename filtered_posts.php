@@ -13,10 +13,10 @@
 	<title>SpotLight | Categories </title>
 </head>
 <body>
-<div class="container">
+
 <!-- Navbar -->
 	<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-
+<div class="container">
 <!-- content -->
 <div class="content">
 	<h2 class="content-title">

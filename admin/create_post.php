@@ -65,10 +65,10 @@
 			</form>
 		</div>
 		<!-- // Middle form - to create and edit -->
-  </div>
-  
-  <script>
-  	CKEDITOR.replace('body');
-  </script>
+	</div>
 </body>
 </html>
+
+<script>
+	CKEDITOR.replace('body');
+</script>

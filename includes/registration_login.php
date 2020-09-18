@@ -13,9 +13,9 @@
 		$password_2 = esc($_POST['password_2']);
 
 		// form validation: ensure that the form is correctly filled
-		if (empty($username)) {  array_push($errors, "Uhmm...We gonna need your username"); }
+		if (empty($username)) {  array_push($errors, "A valid username is required"); }
 		if (empty($email)) { array_push($errors, "Oops.. Email is missing"); }
-		if (empty($password_1)) { array_push($errors, "uh-oh you forgot the password"); }
+		if (empty($password_1)) { array_push($errors, "Enter a password"); }
 		if ($password_1 != $password_2) { array_push($errors, "The two passwords do not match");}
 
 		// Ensure that no user is registered twice. 
@@ -33,7 +33,8 @@
 			if ($user['email'] === $email) {
 			  array_push($errors, "Email already exists");
 			}
-		}
+    }
+    
 		// register user if there are no errors in the form
 		if (count($errors) == 0) {
 			$password = md5($password_1);//encrypt the password before saving in the database
@@ -94,7 +95,7 @@
 					exit(0);
 				}
 			} else {
-				array_push($errors, 'Wrong credentials');
+				array_push($errors, 'Error signing in');
 			}
 		}
 	}
@@ -104,7 +105,7 @@
 		// bring the global db connect object into function
 		global $conn;
 
-		$val = trim($value); // remove empty space sorrounding string
+		$val = trim($value); // remove empty space surrounding string
 		$val = mysqli_real_escape_string($conn, $value);
 
 		return $val;
@@ -119,7 +120,7 @@
 		$user = mysqli_fetch_assoc($result);
 
 		// returns user in an array format: 
-		// ['id'=>1 'username' => 'Awa', 'email'=>'a@a.com', 'password'=> 'mypass']
+		// ['id'=>1 'username' => 'Emmanuel', 'email'=>'a@a.com', 'password'=> 'mypass']
 		return $user; 
 	}
 ?>

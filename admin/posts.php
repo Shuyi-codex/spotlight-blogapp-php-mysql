@@ -26,8 +26,8 @@
 				<table class="table">
 						<thead>
 						<th>N</th>
-						<th>Title</th>
 						<th>Author</th>
+						<th>Title</th>
 						<th>Views</th>
 						<!-- Only Admin can publish/unpublish post -->
 						<?php if ($_SESSION['user']['role'] == "Admin"): ?>

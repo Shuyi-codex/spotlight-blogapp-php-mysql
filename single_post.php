@@ -11,54 +11,62 @@
 <?php include('includes/head_section.php'); ?>
 <title> <?php echo $post['title'] ?> | SpotLight</title>
 </head>
-<body>
-<div class="container">
+
 	<!-- Navbar -->
-		<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
+	<?php include( ROOT_PATH . '/includes/navbar.php'); ?>
 	<!-- // Navbar -->
-	
-	<div class="content" >
-		<!-- Page wrapper -->
-		<div class="post-wrapper">
-			<!-- full post div -->
-			<div class="full-post-div">
-			<?php if ($post['published'] == false): ?>
-				<h2 class="post-title">Sorry... This post has not been published yet!</h2>
-        <h3 class="post-body-div"> The administrators of this page will publish this 
-          article very soon. Sorry for the inconvenience that may have caused. In the meantime, Please check out other various <a href="<?php echo BASE_URL . 'index.php' ?>">published articles</a></p>
-			<?php else: ?>
-				<h2 class="post-title"><?php echo $post['title']; ?></h2>
-				<div class="post-body-div">
-					<?php echo html_entity_decode($post['body']); ?>
-				</div>
-			<?php endif ?>
-			</div>
-			<!-- // full post div -->
-			
-			<!-- comments section -->
-			<!--  coming soon ...  -->
-		</div>
-		<!-- // Page wrapper -->
+	<main>
+    <section class="container">
+      <div class="article-content">
+        <!-- Page wrapper -->
+        <div class="posts">
+          <?php if ($post['published'] == false): ?>
+          <div class="post-content">
+            <div class="post-title">
+              <h3>
+                Sorry... This post has not been published yet!
+              </h3>
+            </div>
+          </div>
+          <?php else: ?>
+          <div class="post-content">
+            <div class="post-image">
+              <div>
+                <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" alt="">
+              </div>
+            </div>
+            <div class="post-title">
+              <h3>
+                <?php echo $post['title']; ?>
+              </h3>
+            </div>
+            <div class="post-info flex-row">
+              <span><i class="fas fa-calendar-alt"><span><?php  echo date("F j, Y ", strtotime($post["created_at"])); ?></i>
+              <br><br> <i class="fas fa-user"></i><?php ?></span>
+            </div>
+            <div class="post-body">
+              <p>
+                <?php echo html_entity_decode($post['body']); ?>
+              </p>
+            </div>
+          </div>
+          <?php endif ?>
+        </div>
+        <aside class="sidebar">
+          <div class="category">
+            <h2>Categories</h2>
+            <ul class="category-list">
+              <?php foreach ($topics as $topic): ?>
+              <li class="list-items"><a href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $topic['id'] ?>">
+                        <?php echo $topic['name']; ?></a> 
+              </li>
+              <?php endforeach ?>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-		<!-- post sidebar -->
-		<div class="post-sidebar">
-			<div class="card">
-				<div class="card-header">
-					<h2>Topics</h2>
-				</div>
-				<div class="card-content">
-					<?php foreach ($topics as $topic): ?>
-						<a 
-							href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $topic['id'] ?>">
-							<?php echo $topic['name']; ?>
-						</a> 
-					<?php endforeach ?>
-				</div>
-			</div>
-		</div>
-		<!-- // post sidebar -->
-	</div>
-</div>
-<!-- // content -->
 
-<?php include( ROOT_PATH . '/includes/footer.php'); ?>
+
+  <?php include( ROOT_PATH . '/includes/footer.php'); ?>

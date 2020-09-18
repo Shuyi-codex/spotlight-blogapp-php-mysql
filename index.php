@@ -13,53 +13,55 @@
 	<title>SpotLight | Home </title>
 </head>
 <body>
-	<!-- container - wraps whole page -->
-	<div class="container">
 
-		<!-- include navbar -->
-    <?php include( ROOT_PATH . '/includes/navbar.php') ?>
+	<!-- include navbar -->
+  <?php include( ROOT_PATH . '/includes/navbar.php') ?>
 
-    <!-- banner -->
-    <?php include( ROOT_PATH . '/includes/banner.php') ?>
-
-		<!-- Page content -->
-		<div class="content">
-			<h2 class="content-title">TOP STORIES</h2>
-			<hr>
-
-      <!-- include all the published articles... -->
-      
-      <?php foreach($posts as $post): ?>
-        <div class="post" style="margin-left: 0px;">
-          <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt="">
-          <!-- Add Post Category -->
-          <?php if (isset($post['topic']['name'])): ?>
-            <a 
-              href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $post['topic']['id'] ?>"
-              class="btn category">
-              <?php echo $post['topic']['name'] ?>
-            </a>
-          <?php endif ?>
-
-          <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
-            <div class="post_info">
-              <h3><?php echo $post['title'] ?></h3>
-              <div class="info">
+  <!-- banner -->
+  <?php include( ROOT_PATH . '/includes/banner.php') ?>
+    <h2 class="content-title">TOP STORIES</h2>
+    <hr>
+	  <!-- Blog Carousel -->
+    <section>
+      <div class="blog">
+        <div class="container">
+          <div class="owl-carousel owl-theme blog-post">
+            <?php foreach($posts as $post): ?>
+            <div class="blog-content">
+              <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" alt="">
+              <div class="blog-title">
+                <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
+                  <h3><?php echo $post['title'] ?></h3>
+                  <!-- <span class="read_more">Read more...</span> -->
+                </a>
+                <?php if (isset($post['topic']['name'])): ?>
+                <button class="btn btn-blog">
+                  <a 
+                    href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $post['topic']['id'] ?>"
+                    class="btn category">
+                    <?php echo $post['topic']['name'] ?>
+                  </a>
+                </button>
+                <?php endif ?>
                 <span><?php  echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
-                <span class="read_more">Read more...</span>
               </div>
             </div>
-          </a>
-        </div>
-      <?php endforeach; ?>
-		</div>
+            <?php endforeach; ?>
+          </div>
+          <div class="owl-navigation">
+            <span class="owl-nav-prev"><i class="fas fa-long-arrow-alt-left"></i></span>
+            <span class="owl-nav-next"><i class="fas fa-long-arrow-alt-right"></i></span>
+          </div>
+        </div>  
+      </div>    
+    </section>  
+  </main>
 		<!-- // Page content -->
 
 		<!-- footer -->
 		<?php include( ROOT_PATH . '/includes/footer.php') ?>
 		<!-- // footer -->
 
-	</div>
-	<!-- // container -->
+  
 </body>
 </html>
